@@ -10,7 +10,33 @@ class Level extends Model
     use HasFactory;
     
     protected $fillable = [
-        'level',
+        'name',
     ];
+
+    public static function createRegister($levelRequest):void {
+
+        $contact = Level::create($levelRequest);
+    }
+
+    public static function getById($id) : Level {
+
+        $level = Level::findOrFail($id);
+
+        return $level;
+    }
+
+    public static function editRegister($levelRequest) : void {
+
+        $level = self::getById($levelRequest->id);
+
+        $level->update($levelRequest->all());
+    }
+
+    public static function deleteRegister($id) : void {
+
+        $level = self::getById($id);
+
+        $level->delete();
+    }
 
 }
