@@ -12,7 +12,11 @@ class ThemeController extends Controller
      */
     public function index()
     {
-        //
+
+//        var_dump('Listando temas');
+//        $theme = Theme::all();
+
+        var_dump('Listando temas');
     }
 
     /**
@@ -20,7 +24,7 @@ class ThemeController extends Controller
      */
     public function create()
     {
-        //
+        var_dump('Criando Tema');
     }
 
     /**
@@ -28,7 +32,7 @@ class ThemeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        var_dump('Adicionando tema no banco');
     }
 
     /**
@@ -44,7 +48,7 @@ class ThemeController extends Controller
      */
     public function edit(Theme $theme)
     {
-        //
+        var_dump('Editando tema');
     }
 
     /**
@@ -52,7 +56,7 @@ class ThemeController extends Controller
      */
     public function update(Request $request, Theme $theme)
     {
-        //
+        var_dump('Atualizando tema no banco');
     }
 
     /**
@@ -60,6 +64,6 @@ class ThemeController extends Controller
      */
     public function destroy(Theme $theme)
     {
-        //
+        var_dump('excluindo tema');
     }
 }
