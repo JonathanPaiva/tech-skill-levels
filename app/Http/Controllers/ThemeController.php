@@ -12,11 +12,9 @@ class ThemeController extends Controller
      */
     public function index()
     {
-
-//        var_dump('Listando temas');
-//        $theme = Theme::all();
-
-        var_dump('Listando temas');
+        //var_dump('Listando temas');
+        $themes = Theme::all();
+        return view('themes.index')->with('themes',$themes);
     }
 
     /**
@@ -24,7 +22,8 @@ class ThemeController extends Controller
      */
     public function create()
     {
-        var_dump('Criando Tema');
+        //var_dump('Criando Tema');
+        return view('themes.create');
     }
 
     /**
