@@ -7,9 +7,7 @@ use Illuminate\Http\Request;
 
 class ThemeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         //var_dump('Listando temas');
@@ -17,52 +15,46 @@ class ThemeController extends Controller
         return view('themes.index')->with('themes',$themes);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         //var_dump('Criando Tema');
         return view('themes.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        var_dump('Adicionando tema no banco');
+        //var_dump('Adicionando tema no banco');
+        Theme::createRegister($request->all());
+        return redirect('themes')
+                ->with('message', 'Criado com Sucesso!')
+                ->with('type', 'success');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Theme $theme)
+    public function edit($id)
     {
-        //
+        //var_dump('Editando tema');
+        $theme = Theme::findOrFail($id);
+
+        return view('themes.edit',['theme' => $theme]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Theme $theme)
+    public function update(Request $request)
     {
-        var_dump('Editando tema');
+        //var_dump('Atualizando tema no banco');
+        Theme::editRegister($request);
+
+        return redirect('themes')
+                -> with('message', 'Editado com Sucesso!')
+                ->with('type', 'success');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Theme $theme)
+    public function destroy($id)
     {
-        var_dump('Atualizando tema no banco');
-    }
+        //var_dump('excluindo tema');
+         Theme::deleteRegister($id);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Theme $theme)
-    {
-        var_dump('excluindo tema');
+         return redirect('themes')
+                ->with('message', 'Excluído com Sucesso!')
+                ->with('type', 'danger');
     }
 }
