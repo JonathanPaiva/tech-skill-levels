@@ -6,17 +6,17 @@
             <a class="ml-4" href="themes/create">Novo</a>
         </h2>
     </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    @foreach ($themes as $t)
-                        <ul>
-                            <li>{{$t->name}}</li>
-                        </ul>
-                    @endforeach
-                </div>
+    
+    <div class="shadow mt-1">
+        <div class="m-1">
+            <a href="" class="btn btn-success">Teste</a>
+        </div>
+            <div class="m-3">
+                @foreach ($themes as $t)
+                    <ul>
+                        <li>{{$t->name}}</li>
+                    </ul>
+                @endforeach
             </div>
         </div>
     </div>

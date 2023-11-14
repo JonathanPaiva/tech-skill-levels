@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Theme;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 
 class ThemeController extends Controller
@@ -12,7 +13,8 @@ class ThemeController extends Controller
     {
         //var_dump('Listando temas');
         $themes = Theme::all();
-        return view('themes.index')->with('themes',$themes);
+        return view('themes.index')
+                ->with('themes', $themes);
     }
 
     public function create()
@@ -25,7 +27,7 @@ class ThemeController extends Controller
     {
         //var_dump('Adicionando tema no banco');
         Theme::createRegister($request->all());
-        return redirect('themes')
+        return view('themes')
                 ->with('message', 'Criado com Sucesso!')
                 ->with('type', 'success');
     }
@@ -44,7 +46,7 @@ class ThemeController extends Controller
         Theme::editRegister($request);
 
         return redirect('themes')
-                -> with('message', 'Editado com Sucesso!')
+                ->with('message', 'Editado com Sucesso!')
                 ->with('type', 'success');
     }
 
@@ -56,5 +58,12 @@ class ThemeController extends Controller
          return redirect('themes')
                 ->with('message', 'Excluído com Sucesso!')
                 ->with('type', 'danger');
+    }
+
+    public function testeChamada()
+    {
+        return view('themes.index')
+                ->with('message', 'Teste de mensagem!')
+                ->with('type', 'success');
     }
 }
