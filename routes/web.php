@@ -23,6 +23,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/teste', function () {
+    return view('teste');
+})->middleware(['auth', 'verified'])->name('teste');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -37,5 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/themes/update/{id}', [ThemeController::class, 'update'])->name('themes.update');
     Route::delete('/themes/{id}', [ThemeController::class, 'destroy'])->name('themes.destroy');
 });
+
+
 
 require __DIR__.'/auth.php';
