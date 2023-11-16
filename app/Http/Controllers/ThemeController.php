@@ -27,7 +27,7 @@ class ThemeController extends Controller
     {
         //var_dump('Adicionando tema no banco');
         Theme::createRegister($request->all());
-        return view('themes')
+        return redirect('themes')
                 ->with('message', 'Criado com Sucesso!')
                 ->with('type', 'success');
     }
@@ -60,10 +60,4 @@ class ThemeController extends Controller
                 ->with('type', 'danger');
     }
 
-    public function testeChamada()
-    {
-        return view('themes.index')
-                ->with('message', 'Teste de mensagem!')
-                ->with('type', 'success');
-    }
 }
