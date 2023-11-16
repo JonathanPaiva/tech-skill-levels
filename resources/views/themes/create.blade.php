@@ -1,16 +1,19 @@
 <x-app-layout>
 
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            <a>Adicione um novo Tema:</a>
-        </h2>
+        <div class="d-flex justify-content-between ">
+            <div class="">
+                <a href="/themes" class="btn btn-sm btn-secondary">Voltar</a>
+            </div>
+            <div class="p-1">
+                <h2 class="fw-bold">Novo Tema:</h2>
+            </div>
+            <div></div>
+        </div>
     </x-slot>
 
-    <div class="shadow mt-1">
-            <div class="m-3">
-                <a>Adição de Temas</a>
-            </div>
-        </div>
+    <div class="mt-1 p-md-3">
+        <a>Adição de Temas</a>
     </div>
-    
+   
 </x-app-layout>
