@@ -7,59 +7,49 @@ use Illuminate\Http\Request;
 
 class LevelController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        //
+        $levels = Level::all();
+        return view('levels.index')
+                ->with('levels', $levels);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('levels.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        Level::createRegister($request->all());
+        return redirect('levels')
+                ->with('message', 'Criado com Sucesso!')
+                ->with('type', 'success');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Level $level)
+    public function edit($id)
     {
-        //
+        $level = Level::findOrFail($id);
+
+        return view('levels.edit',['level' => $level]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Level $level)
+    public function update(Request $request)
     {
-        //
+        Level::editRegister($request);
+
+        return redirect('levels')
+                ->with('message', 'Editado com Sucesso!')
+                ->with('type', 'success');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Level $level)
+    public function destroy($id)
     {
-        //
-    }
+        Level::deleteRegister($id);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Level $level)
-    {
-        //
+        return redirect('levels')
+               ->with('message', 'Excluído com Sucesso!')
+               ->with('type', 'danger');
     }
 }

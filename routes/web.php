@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LevelController;
 use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -40,8 +41,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/themes/edit/{id}', [ThemeController::class, 'edit'])->name('themes.edit');
     Route::put('/themes/update/{id}', [ThemeController::class, 'update'])->name('themes.update');
     Route::delete('/themes/{id}', [ThemeController::class, 'destroy'])->name('themes.destroy');
+
+    Route::get('/levels', [LevelController::class, 'index'])->name('levels');
+    Route::get('/levels/create', [LevelController::class, 'create'])->name('levels.create');
+    Route::post('/levels', [LevelController::class, 'store'])->name('levels.store');
+    Route::get('/levels/edit/{id}', [LevelController::class, 'edit'])->name('levels.edit');
+    Route::put('/levels/update/{id}', [LevelController::class, 'update'])->name('levels.update');
+    Route::delete('/levels/{id}', [LevelController::class, 'destroy'])->name('levels.destroy');
 });
-
-
 
 require __DIR__.'/auth.php';

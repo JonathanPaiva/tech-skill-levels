@@ -6,10 +6,10 @@
                 <a href="/" class="btn btn-sm btn-secondary">Voltar</a>
             </div>
             <div class="p-1">
-                <span class="fw-bold">Listagem de Temas:</span>
+                <span class="fw-bold">Listagem de Níveis:</span>
             </div>
             <div class="">
-                <a href="{{ route('themes.create')}}" class="btn btn-sm btn-primary">Novo</a>
+                <a href="{{ route('levels.create')}}" class="btn btn-sm btn-primary">Novo</a>
             </div>
         </div>
     </x-slot>
@@ -27,25 +27,25 @@
         
                <tbody>
         
-                @foreach ($themes as $theme)
+                @foreach ($levels as $level)
         
                 <tr>
                     <td>
                         <span>
-                            {{ $theme->name }}
+                            {{ $level->name }}
                         </span> 
                     </td>
                     
                     <td>
                         <div class="d-flex">
-                            <a href="{{ route('themes.edit', ['id' => $theme->id])}}" class="btn btn-primary me-1">
+                            <a href="{{ route('levels.edit', ['id' => $level->id])}}" class="btn btn-primary me-1">
                                 Editar
                             </a>
                                     
-                            <form action="{{ route('themes.destroy', ['id' => $theme->id])}}" method="post"> 
+                            <form action="{{ route('levels.destroy', ['id' => $level->id])}}" method="post"> 
                                 @csrf
                                 <input type="hidden" name="_method" value="DELETE">
-                                <button class="btn btn-danger" type="submit btn" data-bs-toggle="modal" data-bs-target="#modalThemesDelete-{{$theme->id}}">
+                                <button class="btn btn-danger" type="submit btn" data-bs-toggle="modal" data-bs-target="#modallevelsDelete-{{$level->id}}">
                                     Excluir
                                 </button>
                             </form>

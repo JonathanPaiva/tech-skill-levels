@@ -11,7 +11,6 @@ class ThemeController extends Controller
 
     public function index()
     {
-        //var_dump('Listando temas');
         $themes = Theme::all();
         return view('themes.index')
                 ->with('themes', $themes);
@@ -19,13 +18,11 @@ class ThemeController extends Controller
 
     public function create()
     {
-        //var_dump('Criando Tema');
         return view('themes.create');
     }
 
     public function store(Request $request)
     {
-        //var_dump('Adicionando tema no banco');
         Theme::createRegister($request->all());
         return redirect('themes')
                 ->with('message', 'Criado com Sucesso!')
@@ -34,7 +31,6 @@ class ThemeController extends Controller
 
     public function edit($id)
     {
-        //var_dump('Editando tema');
         $theme = Theme::findOrFail($id);
 
         return view('themes.edit',['theme' => $theme]);
@@ -42,7 +38,6 @@ class ThemeController extends Controller
 
     public function update(Request $request)
     {
-        //var_dump('Atualizando tema no banco');
         Theme::editRegister($request);
 
         return redirect('themes')
@@ -52,7 +47,6 @@ class ThemeController extends Controller
 
     public function destroy($id)
     {
-        //var_dump('excluindo tema');
          Theme::deleteRegister($id);
 
          return redirect('themes')
