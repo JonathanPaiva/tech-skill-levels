@@ -11,16 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('questions', function (Blueprint $table) {
+        Schema::create('alternatives', function (Blueprint $table) {
             $table->id();
-            $table->string('question', 250);
-            $table->foreignId('theme_id')
-                ->constrained('themes')
-                ->restrictOnDelete()
-                ->cascadeOnUpdate();
-            $table->foreignId('level_id')
-                ->constrained('levels')
-                ->restrictOnDelete()
+            $table->string('alternative',250);
+            $table->boolean('correct')->default(false);
+            $table->foreignId('question_id')
+                ->constrained('questions')
+                ->cascadeOnDelete()
                 ->cascadeOnUpdate();
             $table->timestamps();
             $table->softDeletes();
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('questions');
+        Schema::dropIfExists('alternatives');
     }
 };

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Anwer;
 use Illuminate\Http\Request;
 
-class AnwerController extends Controller
+class AlternativeController extends Controller
 {
     /**
      * Display a listing of the resource.

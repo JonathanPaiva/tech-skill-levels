@@ -10,8 +10,12 @@ class Anwer extends Model
     use HasFactory;
     
     protected $fillable = [
-        'anwer',
-        'correct',
-        'questionID'
+        'alternative',
+        'correct'
     ];
+    
+    public function question()
+    {
+        return $this->belongsTo(Question::class);
+    }
 }
