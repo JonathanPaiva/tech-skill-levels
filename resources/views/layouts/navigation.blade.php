@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('levels')" :active="request()->routeIs('levels*')">
                         Níveis
                     </x-nav-link>
+                    <x-nav-link :href="route('questions')" :active="request()->routeIs('questions*')">
+                        Perguntas
+                    </x-nav-link>
                 </div>
             </div>
 

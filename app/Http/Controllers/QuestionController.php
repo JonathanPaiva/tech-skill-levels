@@ -7,59 +7,49 @@ use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        //
+        $questions = Question::all();
+        return view('levels.index')
+                ->with('levels', $questions);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('questions.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        Question::createRegister($request->all());
+        return redirect('questions')
+                ->with('message', 'Criado com Sucesso!')
+                ->with('type', 'success');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Question $question)
+    public function edit($id)
     {
-        //
+        $question = Question::findOrFail($id);
+
+        return view('questions.edit',['question' => $question]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Question $question)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Question $question)
     {
-        //
+        Question::editRegister($request);
+
+        return redirect('questions')
+                ->with('message', 'Editado com Sucesso!')
+                ->with('type', 'success');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Question $question)
+    public function destroy($id)
     {
-        //
+        Question::deleteRegister($id);
+
+        return redirect('questions')
+               ->with('message', 'Excluído com Sucesso!')
+               ->with('type', 'danger');
     }
 }

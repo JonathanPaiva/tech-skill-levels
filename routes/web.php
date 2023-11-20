@@ -3,6 +3,7 @@
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,6 +49,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/levels/edit/{id}', [LevelController::class, 'edit'])->name('levels.edit');
     Route::put('/levels/update/{id}', [LevelController::class, 'update'])->name('levels.update');
     Route::delete('/levels/{id}', [LevelController::class, 'destroy'])->name('levels.destroy');
+
+    Route::get('/questions', [QuestionController::class, 'index'])->name('questions');
+    Route::get('/questions/create', [QuestionController::class, 'create'])->name('questions.create');
+    Route::post('/questions', [QuestionController::class, 'store'])->name('questions.store');
+    Route::get('/questions/edit/{id}', [QuestionController::class, 'edit'])->name('questions.edit');
+    Route::put('/questions/update/{id}', [QuestionController::class, 'update'])->name('questions.update');
+    Route::delete('/questions/{id}', [QuestionController::class, 'destroy'])->name('questions.destroy');
 });
 
 require __DIR__.'/auth.php';
