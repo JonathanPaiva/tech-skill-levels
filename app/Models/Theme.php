@@ -38,4 +38,9 @@ class Theme extends Model
 
         $theme->delete();
     }
+
+    public function themeQuestions()
+    {
+        return $this->hasMany(Question::class);
+    }
 }

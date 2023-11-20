@@ -41,4 +41,9 @@ class Level extends Model
         $level->delete();
     }
 
+    public function levelQuestions()
+    {
+        return $this->hasMany(Question::class);
+    }
+
 }
