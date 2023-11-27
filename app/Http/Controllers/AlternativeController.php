@@ -2,64 +2,55 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Anwer;
+use App\Models\Alternative;
 use Illuminate\Http\Request;
 
 class AlternativeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $alternatives = Alternative::all();
+
+        return view('alternatives.index')
+                ->with('alternatives', $alternatives);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('alternative.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        Alternative::createRegister($request->all());
+        
+        return redirect('alternative')
+                ->with('message', 'Criado com Sucesso!')
+                ->with('type', 'success');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Anwer $anwer)
+    public function edit($id)
     {
-        //
+        $alternative = Alternative::findOrFail($id);
+
+        return view('alternative.edit',['alternative' => $alternative]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Anwer $anwer)
+    public function update(Request $request)
     {
-        //
+        Alternative::editRegister($request);
+
+        return redirect('alternative')
+                ->with('message', 'Editado com Sucesso!')
+                ->with('type', 'success');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Anwer $anwer)
+    public function destroy($id)
     {
-        //
-    }
+        Alternative::deleteRegister($id);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Anwer $anwer)
-    {
-        //
+        return redirect('alternative')
+               ->with('message', 'Excluído com Sucesso!')
+               ->with('type', 'danger');
     }
 }

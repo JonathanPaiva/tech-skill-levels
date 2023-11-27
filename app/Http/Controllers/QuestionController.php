@@ -38,7 +38,7 @@ class QuestionController extends Controller
         return view('questions.edit',['question' => $question]);
     }
 
-    public function update(Request $request, Question $question)
+    public function update(Request $request)
     {
         Question::editRegister($request);
 
