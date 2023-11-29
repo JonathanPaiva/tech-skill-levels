@@ -20,7 +20,7 @@
 
                 <thead>
                     <tr>
-                      <th scope="col" class="">Nome:</th>
+                      <th scope="col" class="">Pergunta:</th>
                       <th scope="col" class="">Tema:</th>
                       <th scope="col" class="">Nível:</th>
                       <th scope="col" class="">Ações:</th>
