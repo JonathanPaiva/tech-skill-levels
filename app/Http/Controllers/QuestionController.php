@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Level;
 use App\Models\Question;
 use App\Models\Theme;
 use Illuminate\Http\Request;
@@ -19,7 +20,12 @@ class QuestionController extends Controller
 
     public function create()
     {
-        return view('questions.create');
+        $themes = Theme::all();
+        $levels = Level::all();
+
+        return view('questions.create')
+                ->with('themes', $themes)
+                ->with('levels', $levels);
     }
 
     public function store(Request $request)
@@ -34,8 +40,14 @@ class QuestionController extends Controller
     public function edit($id)
     {
         $question = Question::findOrFail($id);
+        $themes = Theme::all();
+        $levels = Level::all();
 
-        return view('questions.edit',['question' => $question]);
+        return view('questions.edit',[
+            'question' => $question,
+            'themes' => $themes,
+            'levels' => $levels
+        ]);
     }
 
     public function update(Request $request)

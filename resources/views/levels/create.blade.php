@@ -3,7 +3,7 @@
     <x-slot name="header">
         <div class="container">
             <div class="p-1 text-center">
-                <h2 class="fw-bold">Novo Nível:</h2>
+                <h2 class="fw-bold">Informe o Nível:</h2>
             </div>
         </div>
     </x-slot>

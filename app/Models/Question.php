@@ -50,7 +50,7 @@ class Question extends Model
         return $this->belongsTo(Level::class);
     }
 
-    public function questionAnwers()
+    public function alternatives()
     {
         return $this->hasMany(Anwer::class);
     }

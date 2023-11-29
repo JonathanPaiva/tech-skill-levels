@@ -34,25 +34,25 @@
                 <tr>
                     <td>
                         <span>
-                            {{ $question->name }}
+                            {{ $question->question }}
                         </span> 
                     </td>
 
                     <td>
                         <span>
-                            {{ $question->theme }}
+                            {{ $question->theme->name }}
                         </span> 
                     </td>
 
                     <td>
                         <span>
-                            {{ $question->level }}
+                            {{ $question->level->name }}
                         </span> 
                     </td>
                     
                     <td>
                         <div class="d-flex">
-                            <a href="{{ route('question.edit', ['id' => $question->id])}}" class="btn btn-primary me-1">
+                            <a href="{{ route('questions.edit', ['id' => $question->id])}}" class="btn btn-primary me-1">
                                 Editar
                             </a>
                                     

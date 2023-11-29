@@ -3,7 +3,7 @@
     <x-slot name="header">
         <div class="container">
             <div class="p-1 text-center">
-                <h2 class="fw-bold">Novo Tema:</h2>
+                <h2 class="fw-bold">Informe o Tema:</h2>
             </div>
         </div>
     </x-slot>

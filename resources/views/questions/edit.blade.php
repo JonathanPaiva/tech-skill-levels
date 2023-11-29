@@ -20,10 +20,35 @@
     
                 <div class="mb-2">
                     <label for="name" class="form-label">Nome:</label>
-                    <input type="input-group-text" class="form-control" id="name" name="name"
-                            placeholder="Digite a Pergunta" value="{{ $question->name }}"
+                    <input type="input-group-text" class="form-control" id="question" name="question"
+                            placeholder="Digite a Pergunta" value="{{ $question->question }}"
                             required>
-                </div>                
+                </div>
+                
+                <div class="mb-2">
+                    <label for="name" class="form-label">Tema:</label>
+                    <select class="form-control" name="theme_id" required>
+                        <option value="" selected>Informe o Tema</option>
+                        @foreach ($themes as $theme)
+                            <option value="{{ $theme->id }}" {{ $question->theme_id == $theme->id ? 'selected' : '' }}>
+                                {{ $theme->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+                
+                <div class="mb-2">
+                    <label for="name" class="form-label">Nível:</label>
+                    <select class="form-control" name="level_id" required>
+                        <option value="" selected>Informe o Nível</option>
+                        @foreach ($levels as $level)
+                            <option value="{{ $level->id }}" {{ $question->level_id == $level->id ? 'selected' : '' }}>
+                                {{ $level->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
                 <div>
                     <button type="submit btn" class="btn btn-success">
                         Salvar

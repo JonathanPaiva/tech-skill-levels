@@ -39,7 +39,7 @@ class Theme extends Model
         $theme->delete();
     }
 
-    public function themeQuestions()
+    public function questions()
     {
         return $this->hasMany(Question::class);
     }
